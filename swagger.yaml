@@ -1,0 +1,58 @@
+swagger: '2.0'
+info:
+  title: TXT Comprehender service
+  version: '1.0'
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /health:
+    get:
+      operationId: app.health
+      summary: Perform health check over server container.
+      responses:
+        200:
+          description: Returns status of server.
+  /comprehender:
+    get:
+      operationId: app.comprehend_from_url
+      summary: Perform comprehension over text.
+      parameters:
+        - name: text
+          in: query
+          description: Text to analyze
+          type: string
+          required: true
+      responses:
+        200:
+          description: Returns entities, sentiments and confidences.
+    post:
+      operationId: app.comprehend_from_file
+      summary: Perform comprehension over text file (limit to 500bytes).
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: txt_file
+          in: formData
+          description: Text file
+          type: file
+          required: true
+      responses:
+        200:
+          description: Returns entities, sentiments and confidences.
+  /conversation:
+    post:
+      operationId: app.comprehend_whatsapp_conversation
+      summary: Perform comprehension over whatsapp export (Not supported).
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: wp_file
+          in: formData
+          description: Whatsapp Text file
+          type: file
+          required: true
+      responses:
+        200:
+          description: Returns entities, sentiments and confidences (Not supported).

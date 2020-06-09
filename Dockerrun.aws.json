@@ -1,0 +1,13 @@
+{
+    "AWSEBDockerrunVersion": 1,
+    "Image": {
+        "Name": "aquintero446/txt-comprenhender",
+        "Update": "true"
+      },
+      "Ports": [
+        {
+          "ContainerPort": 80,
+          "HostPort": 80
+        }
+      ]
+}

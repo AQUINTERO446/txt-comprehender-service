@@ -1,0 +1,28 @@
+language: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t $DOCKER_REPO -f ./Dockerfile.dev . 
+
+script:
+  - bash test.sh
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push $DOCKER_REPO
+
+  deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "yolo"
+  env: "Yolo-env"
+  bucket_name: "elasticbeanstalk-us-east-2-381560538190"
+  bucket_path: "yolo"
+  on:
+      branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  only_create_app_version: "false"

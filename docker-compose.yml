@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  comprehend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    env_file: ./.env
+    ports:
+      - 8080:80
+    volumes: 
+      - ./app.py:/app/app.py
