@@ -34,6 +34,10 @@ def comprehend(text):
     # }, 200
     return detection, 200
 
+def get_job_results(job_id):
+    return {'status': 'Working on it'}, 200
+
+
 def comprehend_from_url(text):
     try:
         res = comprehend(text)

@@ -14,6 +14,19 @@ paths:
       responses:
         200:
           description: Returns status of server.
+  /analitics:
+    get:
+      operationId: app.get_job_results
+      summary: Get status of comprehension job.
+      parameters:
+        - name: job_id
+          in: query
+          description: Id of job
+          type: string
+          required: true
+      responses:
+        200:
+          description: Returns entities, sentiments and confidences or job status.
   /comprehender:
     get:
       operationId: app.comprehend_from_url
@@ -29,7 +42,7 @@ paths:
           description: Returns entities, sentiments and confidences.
     post:
       operationId: app.comprehend_from_file
-      summary: Perform comprehension over text file (limit to 500bytes).
+      summary: Create a job to perform comprehension over text file.
       consumes:
         - multipart/form-data
       parameters:
@@ -40,11 +53,11 @@ paths:
           required: true
       responses:
         200:
-          description: Returns entities, sentiments and confidences.
+          description: Job Id.
   /conversation:
     post:
       operationId: app.comprehend_whatsapp_conversation
-      summary: Perform comprehension over whatsapp export (Not supported).
+      summary: Create a job to perform comprehension over whatsapp export (Not supported).
       consumes:
         - multipart/form-data
       parameters:
@@ -55,4 +68,4 @@ paths:
           required: true
       responses:
         200:
-          description: Returns entities, sentiments and confidences (Not supported).
+          description: Job Id.
