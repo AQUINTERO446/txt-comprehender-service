@@ -14,7 +14,7 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push $DOCKER_REPO
 
-  deploy:
+deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
   app: "comprehend-service"
@@ -22,7 +22,7 @@ after_success:
   bucket_name: "elasticbeanstalk-us-east-2-381560538190"
   bucket_path: "comprehend-service"
   on:
-      branch: master
+    branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   only_create_app_version: "false"
