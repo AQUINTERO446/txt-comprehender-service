@@ -1,7 +1,7 @@
 {
     "AWSEBDockerrunVersion": 1,
     "Image": {
-        "Name": "aquintero446/txt-comprenhender",
+        "Name": "aquintero446/comprehend",
         "Update": "true"
       },
       "Ports": [
