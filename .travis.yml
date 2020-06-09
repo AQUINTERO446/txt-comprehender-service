@@ -18,7 +18,7 @@ deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
   app: "comprehend-service"
-  env: "ComprehendService-env"
+  env: "ComprehendService-env-1"
   bucket_name: "elasticbeanstalk-us-east-2-381560538190"
   bucket_path: "comprehend-service"
   on:
